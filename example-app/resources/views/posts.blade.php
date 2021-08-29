@@ -4,10 +4,19 @@
 <body>
 <?php foreach ( $posts as $post) : ?>
 <article>
-   <?= $post; ?>
+    <h1>
+        <a href="posts/<?= $post->slug; ?>">View</a>
+        <?= $post->title; ?>
+    </h1>
+    <br>
+    <div>
+        <?= $post->excerpt; ?>
+    </div>
+    <br>
+    <?= $post->date; ?>
 
 </article>
-<?php endoforeach; ?>
+<?php endforeach; ?>
 
 
 </body>

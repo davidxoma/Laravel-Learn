@@ -1,7 +1,10 @@
 <?php
 
 use App\Models\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//    return Post::find('my-first-post');
-    $posts = Post::all();
-    ddd($posts);
-    return view('posts', [
-        'posts' => Post::all()
-    ]);
+
+   return view('posts', [
+       'posts' => Post::all(),
+       ]);
 });
 
 Route::get('posts/{post}', function ($slug) {
-    $post = Post::find($slug);
     return view('post', [
-        'post' => $post,
-    ]);
+            'post' => Post::find($slug)
+        ]);
 
 })->where('post', '[A-z_\-]+');
